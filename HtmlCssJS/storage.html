@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Storage Example</title>
+    </head>
+    <body>
+        <h1>Here we save the user</h1>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button id="saveButton" onclick="onSetData()">Save Name</button>
+        <hr/>
+        <div id="result"></div>
+
+        <script>
+            function onSetData() {
+                if(typeof(Storage) !== "undefined") {
+        
+                    // Store
+                    var txtInput = document.getElementById("nameInput");
+                    var name = txtInput.value;
+                    localStorage.setItem("userName", name);
+
+                    // Retrieve
+                    var storedName = localStorage.getItem("userName");
+
+                    // Display result
+                    var divId = document.getElementById("result");
+                    divId.innerHTML = "Hello " + storedName + ", your name has been saved successfully!";
+                } else {
+                    var divId = document.getElementById("result");
+                    divId.innerHTML = "Sorry, your browser does not support HTML 5 features... web storage is not supported.";
+                }
+            }
+        </script>
+    </body>
+</html>

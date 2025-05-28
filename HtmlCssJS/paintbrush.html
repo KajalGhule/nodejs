@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Paint</title>
+    </head>
+    <body>
+        <canvas id="canvas" width="500" height="300" style="background-color: aqua;"></canvas>
+        <h1 style="color: blueviolet;">Hello kajal</h1>
+
+        <script>
+            function drawLine() {
+                var theCanavas = document.getElementById("canvas");
+                var context = theCanavas.getContext("2d");
+                context.moveTo(10,200);
+                context.lineTo(200,200);
+                context.stroke();
+            }
+            function rectangle() {
+                var theCanavas = document.getElementById("canvas");
+                var context = theCanavas.getContext("2d");
+                context.fillStyle="#fff000";
+                context.fillRect(300,50,200,150);
+            }
+            function triangle() {
+                var theCanavas = document.getElementById("canvas");
+                var context = theCanavas.getContext("2d");
+                context.beginPath();
+                context.moveTo(100, 100);
+                context.lineTo(150, 50);
+                context.lineTo(200, 100);   
+                context.fill();
+            }
+            drawLine();
+            rectangle();
+            triangle();
+        </script>
+    </body>
+</html>

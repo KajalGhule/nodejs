@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to HTML</title>
+    </head>
+
+    <body>
+        <button id="myBtn">Click Here</button>
+        <p id="demo"></p>
+        <script>
+
+            var btn =document.getElementById("myBtn")
+            btn.addEventListener("click",displayDate);
+            document.addEventListener("mousedown", onMouseDown);
+            document.addEventListener("mouseout", onMouseOut);
+
+            function onMouseDown() {
+                document.getElementById("demo").innerHTML = "Mouse Down";
+            }
+            function onMouseOut() {
+                   document.getElementById("demo").innerHTML = "Mouse out";
+            }
+            function displayDate() {
+                document.getElementById("demo").innerHTML = Date(); 
+            }
+        </script>
+    </body>
+</html>
