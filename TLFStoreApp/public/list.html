@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Product List</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <h1>Today's fresh flowers</h1>
+        <hr/>
+        <ol id="flowerslist">
+
+        </ol>
+        <button>Click me</button>
+        <script>
+            //Ajax technique
+             //JQuery technique
+            $(document).ready(function() {
+                console.log('Document is ready');
+                $("button").click(function(){
+                    console.log("button is clicked....");
+                    var ol = document.getElementById('flowerslist');
+
+                    $.get("/api/flowers", function(data, status){
+                        for(var i = 0; i < data.length; i++) {
+                            console.log(data[i].name);
+                            ol.innerHTML += "<li>" + data[i].name + " - " + data[i].unitPrice  + "</li>";
+                        }
+                        // alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+                    })
+                });
+            });
+            /* async function getAllFlowers() {
+                // var flowersList = document.getElementById('flowerslist');
+                var flowersUrl = 'http://localhost:3000/api/flowers';
+                try{
+                let response = await fetch(flowersUrl);
+                console.log(response.body);
+                }
+                catch(err){
+                    console.error('Error fetching flowers:', err);
+                    return;
+                }
+            };
+            getAllFlowers();
+            */
+        </script>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+[
+    { "id": 1, "name": "Rose", "description": "Red rose symbolizing love and passion.", "unitPrice": 10.5, "quantity": 100, "likes": 250 }, 
+    { "id": 2, "name": "Lily", "description": "White lily representing purity and elegance.", "unitPrice": 8.75, "quantity": 50, "likes": 180 }, 
+    { "id": 3, "name": "Tulip"," description": "Colorful tulip for spring decoration.", "unitPrice": 6.25, "quantity": 75, "likes": 90 }
+]

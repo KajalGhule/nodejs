@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Register Page</title>
+    </head>
+    <body>
+        <h1>Register</h1>
+
+        <form action="/api/register" method="post">
+            <table>
+                <tr>
+                    <td><label>First Name</label></td>
+                    <td><input type="text" name="firstname" id="firstname"></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name</label></td>
+                    <td><input type="text" name="lastname" id="lastname"></td>
+                </tr>
+                <tr>
+                    <td><label>email</label></td>
+                    <td><input type="email" name="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td><label>Contact number</label></td>
+                    <td><input type="text" name="contactNumber" id="contactnumber"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit">Register</button></td>
+            </table>
+        </form>
+</html>
