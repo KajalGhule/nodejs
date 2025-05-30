@@ -23,16 +23,37 @@
                 <td></td>
                 <td><button id="btnSelectState">Get Cities</button></td>
             </tr>
-
+            <tr>
+            <td>Cities</td>
+            <td>
+                <ul id="cityList"></ul>
+            </td>
+        </tr>
         </table>
         <hr/>
         <script>
             $(document).ready(function() {
+                const stateCities = {
+                "Gujrat": ["Ahmedabad", "Surat", "Vadodara"],
+                "Maharastra": ["Mumbai", "Pune", "Nagpur"],
+                "Goa": ["Panaji", "Vasco da Gama", "Margao"],
+                "MP": ["Bhopal", "Indore", "Gwalior"]
+                };
                 $("#btnSelectState").click(() => {
                     var selectedState = $("#mySelect option:selected").text();
                     alert("You selected: " + selectedState);
                     console.log("Selected state: " + selectedState);
-                });
+
+                    const cities = stateCities[selectedState] || [];
+
+                    // Clear previous cities
+                    $("#cityList").empty();
+
+                    // Add cities to the list
+                    $.each(cities, function (index, city) {
+                        $("#cityList").append("<li>" + city + "</li>");
+                    });
+                    });
             });
         </script>
     </body>
