@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- <script src="script/jquery.min.js"></script>   always use this-->
+    </head>
+    <body>
+        <button>Send data</button>
+        <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                    var newCustomer = {
+                        "id":7,
+                        "firstname":"kajal",
+                        "lastname": "ghule",
+                        "email": "kajal@gmail.com",
+                        "contactNumber": "7418529613"
+                    };
+                    let url = "/api/register";
+                    $.post(url, newCustomer, function(){
+                        console.log("data is posted to server side");
+                    })
+                });
+            });
+        </script>
+    </body>
+</html>
