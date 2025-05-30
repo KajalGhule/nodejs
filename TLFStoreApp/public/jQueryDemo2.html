@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <title>jQuery Demo 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        
+    <body>
+        <h1>Drop down list</h1>
+        
+        <hr/>
+        <table>
+            <tr>
+                <td>State</td>
+                <td>
+                <select id="mySelect">
+                    <option value="1">Gujrat</option>
+                    <option value="2">Maharastra</option>
+                    <option value="3">Goa</option>
+                    <option value="4">MP</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="btnSelectState">Get Cities</button></td>
+            </tr>
+
+        </table>
+        <hr/>
+        <script>
+            $(document).ready(function() {
+                $("#btnSelectState").click(() => {
+                    var selectedState = $("#mySelect option:selected").text();
+                    alert("You selected: " + selectedState);
+                    console.log("Selected state: " + selectedState);
+                });
+            });
+        </script>
+    </body>
+</html>
