@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <title>jQuery Demo 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        
+    <body>
+        <h1>Job Description</h1>
+        <p>Mentor as a service</p>
+        <hr/>
+        <p id="p">Hello</p>
+        <ol>
+            <li>jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.</li>
+            <li>It allows developers to write less code while achieving more functionality.</li>
+            <li>jQuery is widely used for its ease of use and cross-browser compatibility.</li>
+            <li>It provides a rich set of features for creating dynamic web applications.</li>
+            <li>jQuery can be included in web pages using a CDN or by downloading the library.</li>
+        </ol>
+        <button id="btnApply">Apply</button>
+        <button id="btnReset">Reset</button>
+        <hr/>
+        <input type="number" id="txtNumber" value="1"/>
+        <button id="btnFetchFlowers">Fetch Flowers</button>
+        <table>
+            <tr>
+                <td>Title</td>
+                <td><p id="pTitle"></p></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><p id="pDescription"></p></td>
+            </tr>
+            <tr>
+                <td>Unit Price</td>
+                <td><p id="pUnitPrice"></p></td>
+            </tr>
+        </table>
+        <hr/>
+        <hr/>
+        <script>
+            $(document).ready(function(){
+                console.log("jQuery is ready to use!");
+                $("#btnApply").click(function(){
+                    $("#p").show();
+                    $("#p").text("You clicked the Apply button!");
+                    
+                    console.log("Apply button clicked!");
+                });
+                $("#btnReset").click(function(){
+                    $("#p").text("You clicked the Reset button!");
+                    $("#p").hide();
+                    console.log("Reset button clicked!");
+                });
+                $("#btnFetchFlowers").click(function(){
+                    // console.log("Fetch Flowers button clicked!");
+                    var id = $("#txtNumber").val(); 
+                    $.ajax({
+                        url: "api/flowers/"+id,
+                        type: "GET",
+                        success: function(flowers) {
+                            console.log("Flowers fetched successfully:", flowers);
+                            // alert("Flowers fetched successfully! Check console for details.");
+                            $("#pTitle").text(flowers.name);
+                            $("#pDescription").text(flowers.description);
+                            $("#pUnitPrice").text(flowers.unitPrice);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching flowers:", error);
+                            alert("Error fetching flowers. Check console for details.");
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
