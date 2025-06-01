@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>All In One</title>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="Div1" style="float: left;width: 300px; height: 400px;">Top 10 Countries by Population:
+            <button id="viewStacked">Visualize Stacked</button>
+            <button id="viewTiled">Visualize Tiled</button>
+        </div>
+        <div id="populationVisualization" style="float: left;width: 300px; height: 800px;">
+
+        </div>
+        <div id="populationData" style="float: right;"></div>
+
+        <script>
+            var listItems = [
+                { country: "China", population: 1444216107 },
+                { country: "India", population: 1393409038 },
+                { country: "United States", population: 331893745 },
+                { country: "Indonesia", population: 276361783 },
+                { country: "Pakistan", population: 225199937 },
+                { country: "Brazil", population: 213993437 },
+                { country: "Nigeria", population: 211400708 },
+                { country: "Bangladesh", population: 166303498 },
+                { country: "Russia", population: 145912025 },
+                { country: "Mexico", population: 130262216 }
+            ];
+
+            var sort_by = function(field, reverse, primer) {
+                var key = function(x) { return primer ? primer(x[field]) : x[field]; };
+                return function(a, b) {
+                    var A = key(a), B = key(b);
+                    return (A < B ? -1 : A > B ? 1 : 0) * [-1, 1][+!!reverse];
+                };
+            };
+
+            function startTable(){
+                document.getElementById("populationData");
+                while(tableArea.hasChildNodes()) {
+                    tableArea.removeChild(tableArea.lastChild);
+                }
+                    var leftColumn = document.createElement("div");
+                    leftColumn.setAttribute("style", "float: left; width: 100px; background-color: #AFAFAF;");
+                    var rightColumn = document.createElement("div");
+                    rightColumn.setAttribute("style", "float: left; width: 100px; background-color: #AFAFAF;");
+
+                    for(var i=0; i<listItems.length; i++){
+                var item = listItems[i];
+                var leftItem = document.createElement("div");
+                leftItem.innerHTML = item.country;
+                leftColumn.appendChild(leftItem);
+                
+                var rightItem = document.createElement("div");
+                rightItem.innerHTML = item.population.toLocaleString();
+                rightColumn.appendChild(rightItem);
+            }
+                    tableArea.appendChild(leftColumn);
+                    tableArea.appendChild(rightColumn);
+        }
+        
+            
+        
+
+            $(document).ready(function(){
+                $("#viewStacked").click(stack);
+                $("#viewTiled").click(tile);
+                startTable();
+            })
+        </script>
+    </body>
+</html>
